@@ -1,36 +1,29 @@
 import React, { Component } from 'react'
-// import { getApi } from '../services/api'
 
 export default class ShowImage extends Component {
   constructor() {
     super()
-
-    this.fetchApi = this.fetchApi.bind(this)
-    
+  
     this.state = {
-      dogImg: undefined,
-      loading: true,
-      storedDogs: [],
+       dogImg: undefined,
     }
   }
-  
-  async fetchApi() {
+
+  async fetchDog() {
     const response = await fetch('https://dog.ceo/api/breeds/image/random')
-    const dataDog = await response.json()
-    const imgRequest = await dataDog.message
-    //console.log(dataDog)
+    const dogObj = await response.json()
     this.setState({
-      dogImg: imgRequest
+      dogImg: dogObj.message
     })
   }
   
   componentDidMount() {
-    this.fetchApi()
+    this.fetchDog()
   }
 
   render() {
     console.log(this.state.dogImg)
-    const { dogImg } =this.state;
+    const { dogImg } = this.state
     return (
       <div>
         {
