@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-// import Button from './Button'
+import Button from './Button'
 
 export default class ShowImage extends Component {
   constructor() {
     super()
     
-    this.newDogButton = this.newDogButton.bind(this)
+    this.newDog = this.newDog.bind(this)
     this.newDogImg = this.newDogImg.bind(this)
   
     this.state = {
@@ -32,13 +32,12 @@ export default class ShowImage extends Component {
     this.fetchDog();
   }
 
-  newDogButton() {
+  newDog() {
     const { dogImg } = this.state
     return (
     <div>
         <img src={dogImg} alt=""/>
       <div>
-        <button type='button' onClick={ this.newDogImg }>New Dog</button>
       </div>
     </div>
     )
@@ -57,10 +56,10 @@ export default class ShowImage extends Component {
         {
           loading ? 
           'Loding...'
-          : <div>{ this.newDogButton() }</div>
+          : <div>{ this.newDog() }</div>
         }
         <div>
-          
+          <Button onClick={ this.newDogImg }/>
         </div>
       </div>
     )
