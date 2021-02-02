@@ -44,7 +44,9 @@ export default class ShowImage extends Component {
   }
 
     
-  
+  componentDidMount() {
+    this.fetchDog()
+  }
 
   render() {
     console.log(this.state.dogImg)
